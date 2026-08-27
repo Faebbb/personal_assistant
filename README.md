@@ -48,7 +48,7 @@
 - Python 3.9 або новіший;
 - додаткові сторонні бібліотеки не потрібні.
 
-## Встановлення
+## Встановлення та запуск
 
 ### 1. Клонування репозиторію
 
@@ -57,49 +57,101 @@ git clone https://github.com/Faebbb/personal_assistant.git
 cd personal_assistant
 ```
 
-### 2. Встановлення як Python-пакета
+Або завантажте ZIP-архів проєкту, розпакуйте його та відкрийте термінал у кореневій папці проєкту.
 
-Рекомендовано створити віртуальне середовище:
+У корені повинні знаходитися:
+
+```text
+personal_assistant/
+tests/
+README.md
+pyproject.toml
+setup.py
+```
+
+### 2. Встановлення пакета
+
+Виконайте:
 
 ```bash
-python -m venv .venv
+python -m pip install -e .
 ```
 
-Windows PowerShell:
-
-```powershell
-.venv\Scripts\Activate.ps1
-```
-
-Windows CMD:
-
-```cmd
-.venv\Scripts\activate.bat
-```
-
-Linux/macOS:
-
-```bash
-source .venv/bin/activate
-```
-
-Після активації:
-
-```bash
-python -m pip install --upgrade pip
-pip install -e .
-```
-
-Тепер застосунок можна запускати з будь-якої папки командою:
+Після успішного встановлення застосунок можна запустити командою:
 
 ```bash
 personal-assistant
 ```
 
-Також можливий запуск без встановлення:
+### 3. Запуск без додавання Scripts до PATH
+
+Якщо команда `personal-assistant` не розпізнається системою, застосунок можна запустити безпосередньо через Python:
 
 ```bash
 python -m personal_assistant.main
+```
+
+### 4. Windows: команда `personal-assistant` не знайдена
+
+Під час встановлення Python може повідомити:
+
+```text
+WARNING: The script personal-assistant.exe is installed in
+'...\Python314\Scripts' which is not on PATH.
+```
+
+Це означає, що пакет встановлено успішно, але папка `Scripts` поточного Python не додана до системної змінної `PATH`.
+
+Щоб дізнатися розташування Python, виконайте:
+
+```bash
+where python
+```
+
+Папка `Scripts` зазвичай знаходиться поруч із `python.exe`.
+
+Наприклад:
+
+```text
+C:\Users\Username\AppData\Local\Programs\Python\Python314\Scripts
+```
+
+Додайте цю папку до змінної середовища `PATH`, після чого закрийте термінал та відкрийте його знову.
+
+Тепер застосунок можна запускати з будь-якої директорії:
+
+```bash
+personal-assistant
+```
+
+### 5. Перевірка встановлення
+
+Інформацію про встановлений пакет можна переглянути командою:
+
+```bash
+python -m pip show personal-assistant-cli
+```
+
+### 6. Запуск тестів
+
+Перейдіть до кореневої папки проєкту та виконайте:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+Усі тести повинні завершитися зі статусом:
+
+```text
+OK
+```
+
+### Видалення пакета
+
+За потреби пакет можна видалити командою:
+
+```bash
+python -m pip uninstall personal-assistant-cli
 ```
 
 ## Команди
