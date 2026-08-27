@@ -9,7 +9,7 @@ setup(
     description=(
         "CLI personal assistant for contacts, birthdays, notes and tags"
     ),
-    author="Personal Assistant Team",
+    author="Faebbb & xDSmile",
     packages=find_packages(),
     python_requires=">=3.9",
     entry_points={
