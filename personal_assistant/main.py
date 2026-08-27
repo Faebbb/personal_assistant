@@ -393,7 +393,9 @@ def main() -> None:
             print(f"❌ {error}")
         except (EOFError, KeyboardInterrupt):
             print("\nОперацію скасовано.")
-        except Exception as error:  # останній захист від аварійного завершення інтерактивного CLI
+        
+        # останній захист від аварійного завершення інтерактивного CLI
+        except Exception as error:
             print(f"❌ Неочікувана помилка: {error}")
 
         _safe_save(book, notes)
